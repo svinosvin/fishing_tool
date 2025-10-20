@@ -13,7 +13,7 @@ namespace fishing_tool
         public static ViewModelLocator Current { get; } = new();
 
 
-        public MainViewModel MainViewModel => 
+        public MainViewModel MainViewModel => Ioc.Resolve<MainViewModel>();
 
     }
 }
