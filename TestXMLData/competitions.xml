@@ -1,0 +1,511 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<Tournament>
+	<Team name="ФИНЛЯНДИЯ">
+		<Fishers>
+			<Fisher name="Хенри Хуттунен">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>317</Weight>
+					<Place>7</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>543</Weight>
+					<Place>6</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Сату Паполяки">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>499</Weight>
+					<Place>4</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>185</Weight>
+					<Place>7</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Терту Кота-Ахо">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>164</Weight>
+					<Place>7</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>E</Zone>
+					<Weight>391</Weight>
+					<Place>6</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Ристо Мяенля">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>258</Weight>
+					<Place>6</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>138</Weight>
+					<Place>7</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Марти Пёлпянен">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>174</Weight>
+					<Place>7</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>685</Weight>
+					<Place>5</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+	<Team name="КАНАДА">
+		<Fishers>
+			<Fisher name="Барри Лупола">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>365</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>341</Weight>
+					<Place>7</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Дэйн Мак Кой">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>195</Weight>
+					<Place>7</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>482</Weight>
+					<Place>7</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Кориен Юпт">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>452</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>E</Zone>
+					<Weight>319</Weight>
+					<Place>6</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Дэнис Пориски">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>258</Weight>
+					<Place>7</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>C</Zone>
+					<Weight>176</Weight>
+					<Place>6</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Дэрил Самикия">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>778</Weight>
+					<Place>4</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>807</Weight>
+					<Place>3</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Клифф Конверт">
+				<Tour1>
+					<Zone>-</Zone>
+					<Weight>-</Weight>
+					<Place>-</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>-</Zone>
+					<Weight>-</Weight>
+					<Place>-</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+	<Team name="УКРАИНА">
+		<Fishers>
+			<Fisher name="Сергей Бурдак">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>486</Weight>
+					<Place>6</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>E</Zone>
+					<Weight>615</Weight>
+					<Place>5</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Юрий Кухарь">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>301</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>485</Weight>
+					<Place>6</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Владимир Сакало">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>468</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>262</Weight>
+					<Place>6</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Анатолий Тихонов">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>355</Weight>
+					<Place>6</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>351</Weight>
+					<Place>5</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Константин Тищевский">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>451</Weight>
+					<Place>6</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>C</Zone>
+					<Weight>213</Weight>
+					<Place>5</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+	<Team name="ЛАТВИЯ">
+		<Fishers>
+			<Fisher name="Гунтис Каркишнис">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>1248</Weight>
+					<Place>1</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>1510</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Василий Арехин">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>926</Weight>
+					<Place>3</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>C</Zone>
+					<Weight>821</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Евгений Григорьев">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>1116</Weight>
+					<Place>3</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>E</Zone>
+					<Weight>1313</Weight>
+					<Place>1</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Петерис Лидерис">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>894</Weight>
+					<Place>4</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>1114</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Леонид Панков">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>746</Weight>
+					<Place>3</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>1301</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Рита Вязра">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>746</Weight>
+					<Place>3</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>1301</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+	<Team name="БЕЛОРУССИЯ">
+		<Fishers>
+			<Fisher name="Петр Нагула">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>391</Weight>
+					<Place>6</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>574</Weight>
+					<Place>4</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Андрей Кишкурно">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>452</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>E</Zone>
+					<Weight>1034</Weight>
+					<Place>3</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Сергей Левизов">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>734</Weight>
+					<Place>4</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>907</Weight>
+					<Place>4</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Юрий Щорс">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>1007</Weight>
+					<Place>3</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>C</Zone>
+					<Weight>1450</Weight>
+					<Place>1</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Владимир Яковлев">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>543</Weight>
+					<Place>6</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>607</Weight>
+					<Place>4</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Игорь Гусенков">
+				<Tour1>
+					<Zone>-</Zone>
+					<Weight>-</Weight>
+					<Place>-</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>-</Zone>
+					<Weight>-</Weight>
+					<Place>-</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+	<Team name="ШВЕЦИЯ">
+		<Fishers>
+			<Fisher name="Ханс-Эрик Кристофферс">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>804</Weight>
+					<Place>3</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>1096</Weight>
+					<Place>3</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Томас Альксон">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>678</Weight>
+					<Place>4</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>C</Zone>
+					<Weight>875</Weight>
+					<Place>3</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Петер Эриксон">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>569</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>798</Weight>
+					<Place>4</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Фольк Андерсон">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>467</Weight>
+					<Place>5</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>876</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Ове Эриксон">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>621</Weight>
+					<Place>4</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>843</Weight>
+					<Place>4</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Берндт Бергрен">
+				<Tour1>
+					<Zone>-</Zone>
+					<Weight>-</Weight>
+					<Place>-</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>-</Zone>
+					<Weight>-</Weight>
+					<Place>-</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+	<Team name="РОССИЯ">
+		<Fishers>
+			<Fisher name="Михаил Дунин">
+				<Tour1>
+					<Zone>B</Zone>
+					<Weight>1449</Weight>
+					<Place>1</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>A</Zone>
+					<Weight>1445</Weight>
+					<Place>1</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Алексей Дьяченко">
+				<Tour1>
+					<Zone>A</Zone>
+					<Weight>1152</Weight>
+					<Place>1</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>D</Zone>
+					<Weight>1485</Weight>
+					<Place>1</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Максим Дыдыкин">
+				<Tour1>
+					<Zone>D</Zone>
+					<Weight>1283</Weight>
+					<Place>2</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>B</Zone>
+					<Weight>1295</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Максим Кусмарцев">
+				<Tour1>
+					<Zone>C</Zone>
+					<Weight>1441</Weight>
+					<Place>1</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>C</Zone>
+					<Weight>1266</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Сергей Кусмарцев">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>1233</Weight>
+					<Place>2</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>E</Zone>
+					<Weight>1296</Weight>
+					<Place>2</Place>
+				</Tour2>
+			</Fisher>
+			<Fisher name="Павел Ржанов">
+				<Tour1>
+					<Zone>E</Zone>
+					<Weight>2429</Weight>
+					<Place>1</Place>
+				</Tour1>
+				<Tour2>
+					<Zone>-</Zone>
+					<Weight>2834</Weight>
+					<Place>1</Place>
+				</Tour2>
+			</Fisher>
+		</Fishers>
+	</Team>
+</Tournament>

@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm.POCO;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,14 @@ namespace fishing_tool
 
         static Ioc()
         {
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.Console()
+                .WriteTo.File("data/log.txt")
+                .CreateLogger();
+
+
             var services = new ServiceCollection();
 
             services.Scan(s =>
@@ -29,7 +38,7 @@ namespace fishing_tool
             Provider = services.BuildServiceProvider();
 
 
-            foreach ( var service in services)
+            foreach ( var service in services.Where(s => s.Lifetime == ServiceLifetime.Singleton))
             {
                 Provider.GetRequiredService(service.ServiceType);
             }

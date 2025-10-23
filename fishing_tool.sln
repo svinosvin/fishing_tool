@@ -9,7 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		requirements.txt = requirements.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXMLData", "TestXMLData\TestXMLData.csproj", "{0A24FC7F-8AF3-4476-B3A5-4BD2AD461B00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +24,10 @@ Global
 		{F4DDCE87-8BAB-4890-B3C9-1DFE9B74A759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4DDCE87-8BAB-4890-B3C9-1DFE9B74A759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4DDCE87-8BAB-4890-B3C9-1DFE9B74A759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A24FC7F-8AF3-4476-B3A5-4BD2AD461B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A24FC7F-8AF3-4476-B3A5-4BD2AD461B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A24FC7F-8AF3-4476-B3A5-4BD2AD461B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A24FC7F-8AF3-4476-B3A5-4BD2AD461B00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

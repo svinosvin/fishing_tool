@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace fishing_tool.Services
 {
-    internal class EXELexport
+    public class EXELexport : ITransient
     {
+
+        
+
     }
 }

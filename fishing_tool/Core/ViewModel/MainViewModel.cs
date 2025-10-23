@@ -9,5 +9,9 @@ namespace fishing_tool.Core.ViewModel
 {
     public class MainViewModel: BindableBase, ISingleton
     {
+
+
+
+
     }
 }
