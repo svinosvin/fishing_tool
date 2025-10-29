@@ -35,6 +35,7 @@ namespace fishing_tool.Services
                             case "Tournament":
                                 string title = reader.GetAttribute("name");
                                 continue;
+                           
                             case "Description":
                                 string description = reader.Value;
                                 continue;
