@@ -6,16 +6,7 @@ using System.Threading.Tasks;
 
 namespace fishing_tool.Services
 {
-    public class EXELexport : ITransient
+    internal class CompetitionService
     {
-        public EXELexport()
-        {
-        
-        
-        }
-
-
-
-
     }
 }

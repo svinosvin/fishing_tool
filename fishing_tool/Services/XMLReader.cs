@@ -32,6 +32,14 @@ namespace fishing_tool.Services
                     {
                         switch (reader.Name.ToString())
                         {
+                            case "Tournament":
+                                string title = reader.GetAttribute("name");
+                                continue;
+                            case "Description":
+                                string description = reader.Value;
+                                continue;
+
+
                             case "Team":
                                 string team_name = reader.GetAttribute("name");
                                 Console.WriteLine(team_name);
@@ -83,8 +91,6 @@ namespace fishing_tool.Services
 
             return false;
         }
-        
-
         
         public static string getPath()
         {   
