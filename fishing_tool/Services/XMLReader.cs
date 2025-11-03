@@ -17,7 +17,7 @@ namespace fishing_tool.Services
         {
     
             string path = getPath();
-            competition.teams = new List<Team>();
+            competition.Teams = new List<Team>();
             Team cTeam = new Team();
             Fisher cFisher = new Fisher();
             Tour cTour = new Tour();
@@ -34,19 +34,23 @@ namespace fishing_tool.Services
                         {
                             case "Tournament":
                                 string title = reader.GetAttribute("name");
+                                competition.Title = title;
                                 continue;
                            
                             case "Description":
                                 string description = reader.Value;
+                                competition.Title = description;
+
                                 continue;
 
 
                             case "Team":
                                 string team_name = reader.GetAttribute("name");
-                                Console.WriteLine(team_name);
+                                int id = Convert.ToInt32(reader.GetAttribute("id"));
                                 cTeam = new Team(team_name);
-                                competition.teams.Add(cTeam);
+                                competition.Teams.Add(cTeam);
                                 continue;
+
                             case "Fisher":
                                 string fisher_name = reader.GetAttribute("name");
                                 cFisher = new Fisher(fisher_name);
@@ -82,11 +86,8 @@ namespace fishing_tool.Services
                                 cFisher.Tours.Add(cTour);
                                 first_tour = false;
                                 continue;
-
                         }
-
                     }
-
                 }
             }
 

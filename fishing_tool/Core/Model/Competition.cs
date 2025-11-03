@@ -13,13 +13,13 @@ namespace TestXMLData.Models
 
         public string? Description { get; set; }
 
-        public ICollection<Team>? teams { get; set; }
+        public ICollection<Team>? Teams { get; set; }
 
         public ICollection<Team> resultTable()
         {
-            if (teams is not null)
+            if (Teams is not null)
             {
-                ICollection<Team> resultTeams = teams
+                ICollection<Team> resultTeams = Teams
                 .OrderByDescending(s => s.TeamScore)
                 .ToList();
 

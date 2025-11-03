@@ -11,6 +11,7 @@ namespace TestXMLData.Models
         public string FIO {  get; set; }
         public List<Tour>? Tours { get; set; } = new List<Tour>();
 
+        public double Score => Tours.Sum(s=> s.Weight) ?? 0;
 
         public Fisher() { }
         public Fisher(string FIO) { this.FIO = FIO; }

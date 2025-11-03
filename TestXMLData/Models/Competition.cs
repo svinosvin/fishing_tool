@@ -11,6 +11,26 @@ namespace TestXMLData.Models
         public int? Id { get; set; }
         public string? Title { get; set; }
 
-        public ICollection<Team>? teams { get; set; }
+        public string? Description { get; set; }
+
+        public ICollection<Team>? Teams { get; set; }
+
+        public ICollection<Team> resultTable()
+        {
+            if (Teams is not null)
+            {
+                ICollection<Team> resultTeams = Teams
+                .OrderByDescending(s => s.TeamScore)
+                .ToList();
+
+            }
+
+            return null;
+        }
+
+
+
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Tournament name = "WinterFishing">
-	<Team name="ФИНЛЯНДИЯ">
+	<Team name="ФИНЛЯНДИЯ" id="1">
 		<Fishers>
 			<Fisher name="Хенри Хуттунен">
 				<Tour1>
@@ -64,7 +64,7 @@
 			</Fisher>
 		</Fishers>
 	</Team>
-	<Team name="КАНАДА">
+	<Team name="КАНАДА" id="2">
 		<Fishers>
 			<Fisher name="Барри Лупола">
 				<Tour1>
@@ -140,7 +140,7 @@
 			</Fisher>
 		</Fishers>
 	</Team>
-	<Team name="УКРАИНА">
+	<Team name="УКРАИНА" id="3">
 		<Fishers>
 			<Fisher name="Сергей Бурдак">
 				<Tour1>
@@ -204,7 +204,7 @@
 			</Fisher>
 		</Fishers>
 	</Team>
-	<Team name="ЛАТВИЯ">
+	<Team name="ЛАТВИЯ" id="4">
 		<Fishers>
 			<Fisher name="Гунтис Каркишнис">
 				<Tour1>
@@ -280,7 +280,7 @@
 			</Fisher>
 		</Fishers>
 	</Team>
-	<Team name="БЕЛОРУССИЯ">
+	<Team name="БЕЛОРУССИЯ" id="5">
 		<Fishers>
 			<Fisher name="Петр Нагула">
 				<Tour1>
