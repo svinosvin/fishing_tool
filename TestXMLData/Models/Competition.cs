@@ -22,7 +22,7 @@ namespace TestXMLData.Models
                 ICollection<Team> resultTeams = Teams
                 .OrderByDescending(s => s.TeamScore)
                 .ToList();
-
+                return resultTeams;
             }
 
             return null;

@@ -33,28 +33,39 @@ namespace fishing_tool.Services
                         switch (reader.Name.ToString())
                         {
                             case "Tournament":
-                                string title = reader.GetAttribute("name");
-                                competition.Title = title;
+
+                                string title1 = reader.GetAttribute("name");
+                                if (competition.Title == null)
+                                    competition.Title = title1;
                                 continue;
-                           
+
                             case "Description":
-                                string description = reader.Value;
-                                competition.Title = description;
+                                string description1 = reader.ReadElementContentAsString();
+                                competition.Description = description1;
 
                                 continue;
 
 
                             case "Team":
                                 string team_name = reader.GetAttribute("name");
-                                int id = Convert.ToInt32(reader.GetAttribute("id"));
-                                cTeam = new Team(team_name);
-                                competition.Teams.Add(cTeam);
+                                if (team_name != null)
+                                {
+                                    int id = Convert.ToInt32(reader.GetAttribute("id"));
+                                    cTeam = new Team(team_name);
+                                    cTeam.id = id;
+                                    competition.Teams.Add(cTeam);
+                                }
+
                                 continue;
 
                             case "Fisher":
                                 string fisher_name = reader.GetAttribute("name");
-                                cFisher = new Fisher(fisher_name);
-                                cTeam.Fishers.Add(cFisher);
+                                if (fisher_name != null)
+                                {
+                                    cFisher = new Fisher(fisher_name);
+                                    cTeam.Fishers.Add(cFisher);
+                                }
+
                                 continue;
 
                             case "Tour1":
@@ -68,7 +79,7 @@ namespace fishing_tool.Services
                                 continue;
 
                             case "Zone":
-                                cTour.Zone = reader.Value;
+                                cTour.Zone = reader.ReadElementContentAsString();
                                 continue;
 
                             case "Weight":

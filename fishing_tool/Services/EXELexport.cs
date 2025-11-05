@@ -15,15 +15,64 @@ namespace fishing_tool.Services
     public class EXELexport : ITransient
     {
 
-
+        //protected List<IRow> rows = new List<IRow>();
 
         public void ExportData(ref Competition competition)
         {
 
-
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("Результаты");
             CreateHeader(ref sheet, competition);
+
+            int firstRow = 7;
+            int lastRow = 7;
+
+            List<Team> teams = competition.resultTable().ToList();
+
+            for (int i = 0; i < teams.Count; i++)
+            {
+                firstRow = lastRow;
+                List<Fisher> f = teams[i].resultTable();
+                for (int j = 0; j < f.Count; j++)
+                {
+                    IRow row = sheet.CreateRow(lastRow);
+                    if (firstRow == lastRow)
+                    {
+                        row.CreateCell(0).SetCellValue(teams[i].id);
+                        row.CreateCell(1).SetCellValue(teams[i].Name);
+
+                        row.CreateCell(11).SetCellValue(teams[i].TeamScore);
+                        row.CreateCell(12).SetCellValue(i + 1);
+
+                    }
+                    row.CreateCell(2).SetCellValue(f[j].FIO);
+                    int currentRow = 3;
+
+                    for (int k = 0; k < f[j].Tours.Count; k++)
+                    {
+
+                        row.CreateCell(currentRow).SetCellValue(f[j].Tours[k].Zone); currentRow++;
+                        row.CreateCell(currentRow).SetCellValue(f[j].Tours[k].Weight ?? 0); currentRow++;
+                        row.CreateCell(currentRow).SetCellValue(f[j].Tours[k].Place ?? 0); currentRow++;
+                    }
+
+                    row.CreateCell(currentRow).SetCellValue(f[j].Score); currentRow++; // Сумма баллов конкретного фишера
+                    row.CreateCell(currentRow).SetCellValue(j); currentRow++; //
+                    if (j != f.Count - 1)
+                        lastRow++;
+
+
+                }
+
+                sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 0, 0));//Номер
+                sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 1, 1));//Команда
+                sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 11, 11));//Сумма баллов
+                sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 12, 12));//Место
+                lastRow += 1;
+            }
+
+
+
 
             FileStream file = File.Create("CellsMerge.xlsx");
             workbook.Write(file, false);
@@ -34,6 +83,9 @@ namespace fishing_tool.Services
 
         public void CreateHeader(ref ISheet sheet, Competition competition)
         {
+          
+
+
             IRow protocol = sheet.CreateRow(0);
             IRow title = sheet.CreateRow(1);
             IRow description = sheet.CreateRow(2);
@@ -41,8 +93,12 @@ namespace fishing_tool.Services
             title.CreateCell(0).SetCellValue(competition.Title);
             description.CreateCell(0).SetCellValue(competition.Description);
 
+         
+
             IRow header = sheet.CreateRow(5);
             IRow subheader = sheet.CreateRow(6);
+        
+
 
             header.CreateCell(0).SetCellValue("#");
             sheet.AddMergedRegion(new CellRangeAddress(5, 6, 0, 0)); //номер
@@ -57,28 +113,27 @@ namespace fishing_tool.Services
 
             subheader.CreateCell(3).SetCellValue("Зона");
             subheader.CreateCell(4).SetCellValue("Вес");
-            subheader.CreateCell(5).SetCellValue("Место");
+            subheader.CreateCell(5).SetCellValue("Место на водоеме");
             sheet.AddMergedRegion(new CellRangeAddress(5, 5, 3, 5));//Первый тур
 
 
             subheader.CreateCell(6).SetCellValue("Зона");
             subheader.CreateCell(7).SetCellValue("Вес");
-            subheader.CreateCell(8).SetCellValue("Место");
+            subheader.CreateCell(8).SetCellValue("Место на водоеме");
             header.CreateCell(6).SetCellValue("Второй тур");
             sheet.AddMergedRegion(new CellRangeAddress(5, 5, 6, 8));//Второй тур
 
 
             subheader.CreateCell(9).SetCellValue("Сумма баллов");
-            subheader.CreateCell(10).SetCellValue("Сумма мест");
-            subheader.CreateCell(11).SetCellValue("Место");
+            subheader.CreateCell(10).SetCellValue("Место");
             header.CreateCell(9).SetCellValue("Личный зачет");
-            sheet.AddMergedRegion(new CellRangeAddress(5, 5, 9, 11));//Личный зачет
+            sheet.AddMergedRegion(new CellRangeAddress(5, 5, 9, 10));//Личный зачет
 
-            subheader.CreateCell(12).SetCellValue("Сумма баллов");
-            subheader.CreateCell(13).SetCellValue("Сумма мест");
-            subheader.CreateCell(14).SetCellValue("Место");
+            subheader.CreateCell(11).SetCellValue("Сумма баллов");
+            subheader.CreateCell(12).SetCellValue("Место");
             header.CreateCell(12).SetCellValue("Командый зачет");
-            sheet.AddMergedRegion(new CellRangeAddress(5, 5, 12, 14));//Командый зачет
+            sheet.AddMergedRegion(new CellRangeAddress(5, 5, 11, 12));//Командый зачет
+
 
         }
         #endregion

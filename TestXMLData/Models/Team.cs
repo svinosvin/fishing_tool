@@ -12,8 +12,20 @@ namespace TestXMLData.Models
         public string? Name { get; set; }
         public List<Fisher>? Fishers { get; set; } = new List<Fisher>();
         public double TeamScore => Fishers.Sum(s => s.Score);
-          
-        
+
+        public List<Fisher> resultTable()
+        {
+            if (Fishers is not null)
+            {
+                ICollection<Fisher> resultTeams = Fishers
+                .OrderByDescending(s => s.Score)
+                .ToList();
+                return resultTeams.ToList();
+            }
+
+            return null;
+        }
+
         public Team() { }
         public Team(string name)
         {

@@ -1,4 +1,5 @@
 ﻿
+using MathNet.Numerics.Distributions;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
@@ -59,15 +60,24 @@ using TestXMLData.Models;
 
                     case "Team":
                         string team_name = reader.GetAttribute("name");
-                        int id = Convert.ToInt32(reader.GetAttribute("id"));
-                        cTeam = new Team(team_name);
-                        competition.Teams.Add(cTeam);
+                        if(team_name != null)
+                        {
+                            int id = Convert.ToInt32(reader.GetAttribute("id"));
+                            cTeam = new Team(team_name);
+                            cTeam.id = id;
+                            competition.Teams.Add(cTeam);
+                        }
+                      
                         continue;
 
                     case "Fisher":
                         string fisher_name = reader.GetAttribute("name");
-                        cFisher = new Fisher(fisher_name);
-                        cTeam.Fishers.Add(cFisher);
+                        if (fisher_name != null) 
+                        {
+                            cFisher = new Fisher(fisher_name);
+                            cTeam.Fishers.Add(cFisher);
+                        }
+                       
                         continue;
 
                     case "Tour1":
@@ -81,7 +91,7 @@ using TestXMLData.Models;
                         continue;
 
                     case "Zone":
-                        cTour.Zone = reader.Value;
+                        cTour.Zone = reader.ReadElementContentAsString();
                         continue;
 
                     case "Weight":
@@ -102,6 +112,32 @@ using TestXMLData.Models;
                 }
             }
         }
+        //#region styles
+        //style.BorderTop = BorderStyle.Thick;
+
+        //style.TopBorderColor = 256;
+
+        //style.BorderLeft = BorderStyle.Thick;
+
+        //style.LeftBorderColor = 256;
+
+        //style.BorderRight = BorderStyle.Thick;
+
+        //style.RightBorderColor = 256;
+
+        //style.BorderBottom = BorderStyle.Thick;
+
+        //style.BottomBorderColor = 256;
+        //foreach (var item in header.Cells)
+        //{
+        //    item.CellStyle = style;
+        //}
+        //foreach (var item in subheader.Cells)
+        //{
+        //    item.CellStyle = style;
+        //}
+
+        //#endregion
 
 
 
@@ -124,6 +160,8 @@ using TestXMLData.Models;
 
         IRow header = sheet.CreateRow(5);
         IRow subheader = sheet.CreateRow(6);
+        ICellStyle style = workbook.CreateCellStyle();
+
 
         header.CreateCell(0).SetCellValue("#");
         sheet.AddMergedRegion(new CellRangeAddress(5, 6, 0, 0)); //номер
@@ -138,56 +176,99 @@ using TestXMLData.Models;
 
         subheader.CreateCell(3).SetCellValue("Зона");
         subheader.CreateCell(4).SetCellValue("Вес");
-        subheader.CreateCell(5).SetCellValue("Место");
+        subheader.CreateCell(5).SetCellValue("Место на водоеме");
         sheet.AddMergedRegion(new CellRangeAddress(5, 5, 3, 5));//Первый тур
 
 
         subheader.CreateCell(6).SetCellValue("Зона");
         subheader.CreateCell(7).SetCellValue("Вес");
-        subheader.CreateCell(8).SetCellValue("Место");
+        subheader.CreateCell(8).SetCellValue("Место на водоеме");
         header.CreateCell(6).SetCellValue("Второй тур");
         sheet.AddMergedRegion(new CellRangeAddress(5, 5, 6, 8));//Второй тур
 
 
         subheader.CreateCell(9).SetCellValue("Сумма баллов");
-        subheader.CreateCell(10).SetCellValue("Сумма мест");
-        subheader.CreateCell(11).SetCellValue("Место");
+        subheader.CreateCell(10).SetCellValue("Место");
         header.CreateCell(9).SetCellValue("Личный зачет");
-        sheet.AddMergedRegion(new CellRangeAddress(5, 5, 9, 11));//Личный зачет
+        sheet.AddMergedRegion(new CellRangeAddress(5, 5, 9, 10));//Личный зачет
 
-        subheader.CreateCell(12).SetCellValue("Сумма баллов");
-        subheader.CreateCell(13).SetCellValue("Сумма мест");
-        subheader.CreateCell(14).SetCellValue("Место");
+        subheader.CreateCell(11).SetCellValue("Сумма баллов");
+        subheader.CreateCell(12).SetCellValue("Место");
         header.CreateCell(12).SetCellValue("Командый зачет");
-        sheet.AddMergedRegion(new CellRangeAddress(5, 5, 12, 14));//Командый зачет
+        sheet.AddMergedRegion(new CellRangeAddress(5, 5, 11, 12));//Командый зачет
+   
+
+        #endregion
+
+        int firstRow = 7;
+        int lastRow = 7;
+
+        List<Team> teams = competition.resultTable().ToList();
+
+        for (int i = 0; i < teams.Count; i++)
+        {
+            firstRow = lastRow;
+            List<Fisher> f = teams[i].resultTable();
+            for (int j = 0; j < f.Count; j++)
+            {
+                IRow row = sheet.CreateRow(lastRow);
+                if (firstRow == lastRow)
+                {
+                    row.CreateCell(0).SetCellValue(teams[i].id);
+                    row.CreateCell(1).SetCellValue(teams[i].Name);
+
+                    row.CreateCell(11).SetCellValue(teams[i].TeamScore);
+                    row.CreateCell(12).SetCellValue(i + 1);
+
+                }
+                row.CreateCell(2).SetCellValue(f[j].FIO);
+                int currentRow = 3;
+
+                for (int k = 0; k < f[j].Tours.Count; k++)
+                {
+
+                    row.CreateCell(currentRow).SetCellValue(f[j].Tours[k].Zone); currentRow++;
+                    row.CreateCell(currentRow).SetCellValue(f[j].Tours[k].Weight ?? 0); currentRow++;
+                    row.CreateCell(currentRow).SetCellValue(f[j].Tours[k].Place ?? 0); currentRow++;
+                }
+
+                row.CreateCell(currentRow).SetCellValue(f[j].Score); currentRow++; // Сумма баллов конкретного фишера
+                row.CreateCell(currentRow).SetCellValue(j); currentRow++; //
+                if (j != f.Count - 1)
+                    lastRow++;
+
+              
+            }
+
+            sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 0, 0));//Номер
+            sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 1, 1));//Команда
+            sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 11, 11));//Сумма баллов
+            sheet.AddMergedRegion(new CellRangeAddress(firstRow, lastRow, 12, 12));//Место
+            lastRow += 1;
+        }
+        //foreach (var team in teams)
+        //{
+                     
+        //    for (var fisher in team.Fish)
+        //    {
+             
+        //        Console.WriteLine(fisher.FIO);
+        //        for (int i = 0; i < fisher.Tours.Count; i++)
+        //        {
+        //            Console.WriteLine($"Тур {i}");
+        //            Console.WriteLine($"Зона {fisher.Tours[i].Zone}");
+        //            Console.WriteLine($"Вес {fisher.Tours[i].Weight}");
+        //            Console.WriteLine($"Место {fisher.Tours[i].Place}");
+        //        }
+        //        lastRow++;
+        //    }
+
+        //}
+
 
         FileStream file = File.Create("CellsMerge.xlsx");
         workbook.Write(file, false);
         file.Close();
-
-
-        #endregion
-
-        foreach (var team in competition.Teams)
-        {   
-
-           
-            foreach (var fisher in team.Fishers)
-            {
-                Console.WriteLine(fisher.FIO);
-                for (int i = 0; i < fisher.Tours.Count; i++)
-                {
-                    Console.WriteLine($"Тур {i}");
-                    Console.WriteLine($"Зона {fisher.Tours[i].Zone}");
-                    Console.WriteLine($"Вес {fisher.Tours[i].Weight}");
-                    Console.WriteLine($"Место {fisher.Tours[i].Place}");
-                }
-
-            }
-
-        }
-
-
 
     }
 }
