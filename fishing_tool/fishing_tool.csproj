@@ -9,12 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Core\ViewModel\" />
-    <Folder Include="Views\" />
-    <Folder Include="Assets\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="DevExpressMvvm" Version="24.1.6" />
     <PackageReference Include="EPPlus" Version="8.2.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />

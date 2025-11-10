@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace fishing_tool.Core.Base
+namespace fishing_tool.Messages
 {
-    internal class BaseViewModel
-    {
-    }
+    public interface IMessage { }
 }

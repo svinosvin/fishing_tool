@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.Mvvm;
+using fishing_tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TestXMLData.Models
 {
-    public class Competition
+     public class Competition : BindableBase
     {
         public int? Id { get; set; }
         public string? Title { get; set; }
@@ -24,7 +26,6 @@ namespace TestXMLData.Models
                 .ToList();
                 return resultTeams;
             }
-
             return null;
         }
 

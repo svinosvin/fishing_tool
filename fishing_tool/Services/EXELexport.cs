@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using NPOI.SS.Formula.Functions;
+using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
 using OfficeOpenXml;
@@ -138,7 +139,10 @@ namespace fishing_tool.Services
         }
         #endregion
 
+        protected void CellsStyler(ref List<IRow> rows)
+        {
 
+        }
     }
 
 

@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:fishing_tool"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Fonts.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:ViewModelLocator x:Key="VmLocator"/>
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
