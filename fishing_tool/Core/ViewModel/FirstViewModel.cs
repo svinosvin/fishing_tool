@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TestXMLData.Models;
 
@@ -14,7 +15,7 @@ namespace fishing_tool.Core.ViewModel
     public class FirstViewModel: BindableBase, ISingleton
     {
         private readonly CompetitionService _competitionService;
-        public Competition Competition { get; set; }
+        private Competition Competition = null;
 
         public FirstViewModel(CompetitionService competitionService) { 
         
@@ -31,21 +32,37 @@ namespace fishing_tool.Core.ViewModel
 
 
         public ICommand GetCompetition => new DelegateCommand(() =>
-        {
-             Competition = _competitionService.GetCompetition();
-             Teams = new ObservableCollection<Team>(Competition.Teams);
-             List<Fisher> fishers = new List<Fisher>();
-             foreach (var team in Teams) { 
-                foreach (var fisher in team.Fishers)
+        {    Competition c = _competitionService.GetCompetition();
+                
+            if (c != null)
+            {
+                Competition = c;
+                Teams = new ObservableCollection<Team>(Competition.Teams);
+                List<Fisher> fishers = new List<Fisher>();
+                foreach (var team in Teams)
                 {
-                    fishers.Add(fisher);
+                    foreach (var fisher in team.Fishers)
+                    {
+                        fishers.Add(fisher);
+                    }
+
                 }
-            
-             }
-            Fishers = new ObservableCollection<Fisher>(fishers);
-           
+                Fishers = new ObservableCollection<Fisher>(fishers);
+
+            }
+
         });
 
+        public ICommand ExportCompetition => new DelegateCommand(() =>
+        {
+           
+            if (_competitionService.exportCompetition(ref Competition))
+                MessageBox.Show("Ваш файл успешно сохранен");
+            else
+            {
+                MessageBox.Show("Вы не загрузили данные, файл не был сохранен!");
+            }
+        });
 
     }
 }

@@ -17,101 +17,106 @@ namespace fishing_tool.Services
         {
     
             string path = getPath();
-            competition.Teams = new List<Team>();
-            Team cTeam = new Team();
-            Fisher cFisher = new Fisher();
-            Tour cTour = new Tour();
-            string byffer = "";
-            bool first_tour = true;
-                         
-            if (File.Exists(path))
+            if (path != null)
             {
-                try
+                competition.Teams = new List<Team>();
+                Team cTeam = new Team();
+                Fisher cFisher = new Fisher();
+                Tour cTour = new Tour();
+                string byffer = "";
+                bool first_tour = true;
+
+                if (File.Exists(path))
                 {
-
-                    using (XmlReader reader = XmlReader.Create(path))
+                    try
                     {
-                        while (reader.Read())
+
+                        using (XmlReader reader = XmlReader.Create(path))
                         {
-                            switch (reader.Name.ToString())
+                            while (reader.Read())
                             {
-                                case "Tournament":
+                                switch (reader.Name.ToString())
+                                {
+                                    case "Tournament":
 
-                                    string title1 = reader.GetAttribute("name");
-                                    if (competition.Title == null)
-                                        competition.Title = title1;
-                                    continue;
+                                        string title1 = reader.GetAttribute("name");
+                                        if (competition.Title == null)
+                                            competition.Title = title1;
+                                        continue;
 
-                                case "Description":
-                                    string description1 = reader.ReadElementContentAsString();
-                                    competition.Description = description1;
+                                    case "Description":
+                                        string description1 = reader.ReadElementContentAsString();
+                                        competition.Description = description1;
 
-                                    continue;
+                                        continue;
 
 
-                                case "Team":
-                                    string team_name = reader.GetAttribute("name");
-                                    if (team_name != null)
-                                    {
-                                        int id = Convert.ToInt32(reader.GetAttribute("id"));
-                                        cTeam = new Team(team_name);
-                                        cTeam.id = id;
-                                        competition.Teams.Add(cTeam);
-                                    }
+                                    case "Team":
+                                        string team_name = reader.GetAttribute("name");
+                                        if (team_name != null)
+                                        {
+                                            int id = Convert.ToInt32(reader.GetAttribute("id"));
+                                            cTeam = new Team(team_name);
+                                            cTeam.id = id;
+                                            competition.Teams.Add(cTeam);
+                                        }
 
-                                    continue;
+                                        continue;
 
-                                case "Fisher":
-                                    string fisher_name = reader.GetAttribute("name");
-                                    if (fisher_name != null)
-                                    {
-                                        cFisher = new Fisher(fisher_name);
-                                        cTeam.Fishers.Add(cFisher);
-                                    }
+                                    case "Fisher":
+                                        string fisher_name = reader.GetAttribute("name");
+                                        if (fisher_name != null)
+                                        {
+                                            cFisher = new Fisher(fisher_name);
+                                            cFisher.TeamName = cTeam.Name;
+                                            cTeam.Fishers.Add(cFisher);
 
-                                    continue;
+                                        }
 
-                                case "Tour1":
-                                    cTour = new Tour();
-                                    first_tour = true;
-                                    continue;
+                                        continue;
 
-                                case "Tour2":
-                                    cTour = new Tour();
-                                    first_tour = false;
-                                    continue;
+                                    case "Tour1":
+                                        cTour = new Tour();
+                                        first_tour = true;
+                                        continue;
 
-                                case "Zone":
-                                    cTour.Zone = reader.ReadElementContentAsString();
-                                    continue;
+                                    case "Tour2":
+                                        cTour = new Tour();
+                                        first_tour = false;
+                                        continue;
 
-                                case "Weight":
-                                    byffer = reader.ReadElementContentAsString();
-                                    if (byffer != "-")
-                                        cTour.Weight = Convert.ToDouble(byffer);
+                                    case "Zone":
+                                        cTour.Zone = reader.ReadElementContentAsString();
+                                        continue;
 
-                                    continue;
+                                    case "Weight":
+                                        byffer = reader.ReadElementContentAsString();
+                                        if (byffer != "-")
+                                            cTour.Weight = Convert.ToDouble(byffer);
 
-                                case "Place":
-                                    byffer = reader.ReadElementContentAsString();
-                                    if (byffer != "-")
-                                        cTour.Place = Convert.ToInt16(byffer);
+                                        continue;
 
-                                    cFisher.Tours.Add(cTour);
-                                    first_tour = false;
-                                    continue;
+                                    case "Place":
+                                        byffer = reader.ReadElementContentAsString();
+                                        if (byffer != "-")
+                                            cTour.Place = Convert.ToInt16(byffer);
+
+                                        cFisher.Tours.Add(cTour);
+                                        first_tour = false;
+                                        continue;
+                                }
                             }
                         }
+                        return true;
                     }
-                    return true;
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    return false;
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return false;
+                    }
                 }
             }
-
+         
             return false;
         }
         
@@ -125,7 +130,7 @@ namespace fishing_tool.Services
 
                 return openFileDialog.FileName;
             }
-            return "";
+            return null;
         }
         #endregion
     }

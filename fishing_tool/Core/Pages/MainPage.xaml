@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       DataContext="{Binding FirstViewModel, Source={StaticResource VmLocator}}"
       Title="MainPage">
-    <Grid Margin="20px">
+    <Grid Margin="0 20px 0 0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <WrapPanel  Grid.Row="0">
-            <Button  Width="300px" 
+            <Button  Width="200px" 
                         Foreground="Black"
                         BorderThickness="1" 
                         BorderBrush="Black"
@@ -24,20 +24,120 @@
                         Height="35" 
                         Background="#FF9D3FA1"
                         FontSize="{StaticResource Regular }"
-                        Padding="0"
-                        Content="Выбрать соревнования" Command="{Binding GetCompetition}"/>
-                <ComboBox  
+                        Padding="0" 
+                        Margin="0 0 10px 0"
+                        Content="Выбрать соревнования" Command="{Binding GetCompetition}" >
+                <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+                </Button.Resources>
+
+            </Button>
+            <Button  Width="200px" 
+             Foreground="Black"
+             BorderThickness="1" 
+             BorderBrush="Black"         
+             FontWeight="Bold"
+             Height="35" 
+             Background="#FF9D3FA1"
+             FontSize="{StaticResource Regular }"
+             Padding="0"
+             Content="Экспорт в EXEL" Command="{Binding ExportCompetition}">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+            
+            <ComboBox  
                           SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                           FontSize="{StaticResource Regular}"
                           Grid.Row="0" Margin="10 15 0 10"  
-                          Width="130">
-                <TextBlock>Командные зачеты</TextBlock>
+                          Width="200">
                 <TextBlock>Личный зачет</TextBlock>
+                <TextBlock>Командные зачеты</TextBlock>
+                  
+       
             </ComboBox>
 
         </WrapPanel>
-        <DataGrid  Grid.Row="1" ItemsSource="{Binding Teams}" AutoGenerateColumns="True" Visibility="{Binding Path=DataMode1, Converter={StaticResource BoolToVis}}"/>
-        <DataGrid  Grid.Row="1" ItemsSource="{Binding Fishers}" AutoGenerateColumns="True" Visibility="{Binding Path=DataMode2, Converter={StaticResource BoolToVis}}"/>
+        <DataGrid 
+           ItemsSource="{Binding Fishers}"
+           CanUserResizeRows="False"  
+           IsReadOnly="True" 
+           Grid.Row="1"  
+           AutoGenerateColumns="False" 
+           Visibility="{Binding Path=DataMode1, Converter={StaticResource BoolToVis}}"
+             >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="#FF9D3FA1"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn SortDirection="Ascending" Header="Команда"  Width="0.15*" Binding="{Binding TeamName}"/>
+                <DataGridTextColumn Header="ФИО"  Width="0.2*" Binding="{Binding FIO}"/>
+                <DataGridTextColumn Header="Тур1/Место" Width="0.1*"  Binding="{Binding Tours[0].Place}"/>
+                <DataGridTextColumn Header="Вес" Width="0.15*"  Binding="{Binding Tours[0].Weight}"/>
+                <DataGridTextColumn Header="Зона" Width="0.1*"  Binding="{Binding Tours[0].Zone}"/>
+                <DataGridTextColumn Header="Тур2/Место" Width="0.1*"  Binding="{Binding Tours[1].Place}"/>
+                <DataGridTextColumn Header="Вес" Width="0.2*"  Binding="{Binding Tours[1].Weight}"/>
+                <DataGridTextColumn Header="Зона" Width="0.15*"  Binding="{Binding Tours[1].Zone}"/>
+                <DataGridTextColumn SortDirection="Ascending" Header="Суммарный счет" Width="0.2*"  Binding="{Binding Score}"/>
+
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight"  Value="UltraLight" />
+                    <Setter Property="Background" Value="#FF1A1B1C" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="Height" Value="25px"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="ToolTip" Value="Sort"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
+        <DataGrid 
+            IsReadOnly="True" 
+            ItemsSource="{Binding Teams}"
+            CanUserResizeRows="False"           
+            Grid.Row="1" 
+            AutoGenerateColumns="False"
+            Visibility="{Binding Path=DataMode2, Converter={StaticResource BoolToVis}}"
+          
+                     >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="#FF9D3FA1"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер команды"  Width="0.4*" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Название/Страна" Width="*"  Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Счет комманды"  Width="*" Binding="{Binding TeamScore}"/>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight"  Value="UltraLight" />
+                    <Setter Property="Background" Value="#FF1A1B1C" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="Height" Value="25px"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="ToolTip" Value="Sort"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
 
     </Grid>
     

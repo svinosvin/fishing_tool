@@ -15,21 +15,37 @@ namespace fishing_tool.Services
         public readonly EXELexport _xlExporter;
         public readonly XMLReader _xmlReader;
 
-        public Competition CurrentCompetition;
+        public Competition? CurrentCompetition = null;
         public CompetitionService(EXELexport xlExporter, XMLReader xmlReader) { 
         
             _xlExporter = xlExporter;
             _xmlReader = xmlReader;
-            CurrentCompetition = new Competition();
+            
         }
 
         public Competition GetCompetition()
         {
-            if(_xmlReader.readDataXML(ref CurrentCompetition))
+            CurrentCompetition = new Competition();
+            if (_xmlReader.readDataXML(ref CurrentCompetition))
             {
                 return CurrentCompetition;
             }
-            return null;
+            CurrentCompetition = null;
+
+            return CurrentCompetition;
+        }
+
+        public bool exportCompetition(ref Competition competition)
+        {
+             if(competition!=null)
+            {
+                CurrentCompetition = competition;
+                return _xlExporter.ExportData(ref CurrentCompetition);
+
+            }
+
+            return false;
+
         }
 
     }

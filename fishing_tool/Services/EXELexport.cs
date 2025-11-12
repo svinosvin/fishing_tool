@@ -1,4 +1,6 @@
-﻿using NPOI.SS.Formula.Functions;
+﻿using MathNet.Numerics.Distributions;
+using Microsoft.Win32;
+using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
@@ -7,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using TestXMLData.Models;
@@ -18,7 +21,7 @@ namespace fishing_tool.Services
 
         //protected List<IRow> rows = new List<IRow>();
 
-        public void ExportData(ref Competition competition)
+        public bool ExportData(ref Competition competition)
         {
 
             IWorkbook workbook = new XSSFWorkbook();
@@ -75,10 +78,17 @@ namespace fishing_tool.Services
 
 
 
-            FileStream file = File.Create("CellsMerge.xlsx");
-            workbook.Write(file, false);
-            file.Close();
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel Workbook(*.xlsx)| *.xlsx | Excel 97 - 2003 Workbook(*.xls) | *.xls | CSV(Comma delimited)(*.csv) | *.csv | All Files(*.*) | *.* ";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                {
+                    workbook.Write(fs, false);
+                    return true;
+                }
+            }
+            return false;
         }
         #region header  
 

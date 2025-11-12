@@ -8,6 +8,8 @@ namespace TestXMLData.Models
 {
     public class Fisher
     {
+        
+        public string TeamName { get; set; }
         public string FIO {  get; set; }
         public List<Tour>? Tours { get; set; } = new List<Tour>();
 
