@@ -6,12 +6,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <DefaultPythonItems>true</DefaultPythonItems>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CSnakes.Runtime" Version="1.2.1" />
     <PackageReference Include="DevExpressMvvm" Version="24.1.6" />
     <PackageReference Include="EPPlus" Version="8.2.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0" />
     <PackageReference Include="NPOI" Version="2.7.5" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageReference Include="Scrutor" Version="6.1.0" />
@@ -25,5 +28,26 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>
-
+	<ItemGroup>
+		<AdditionalFiles Include="*.py" SourceItemType="Python">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</AdditionalFiles>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Assets\Images\example.png" />
+	  <None Remove="Core\Python\script.py" />
+	</ItemGroup>
+	<ItemGroup>
+	  <AdditionalFiles Include="Core\Python\script.py">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </AdditionalFiles>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Assets\Images\example.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
 </Project>

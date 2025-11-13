@@ -10,6 +10,36 @@
       Title="HelpPage">
 
     <Grid>
-        <TextBlock>Help</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0 20px ">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" 
+                    Width="200px" 
+                        Foreground="Black"
+                        BorderThickness="1" 
+                        BorderBrush="Black"
+                        FontWeight="Bold"
+                        Height="35" 
+                        Background="#FF9D3FA1"
+                        FontSize="{StaticResource Regular }"
+                        Padding="0" 
+                        Margin="0 0 10px 0"
+                        Content="Сгенерировать пример" Command="{Binding generateExample}" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Image  Grid.Row="1" Source="pack://application:,,,/Assets/Images/example.png" />
     </Grid>
 </Page>
