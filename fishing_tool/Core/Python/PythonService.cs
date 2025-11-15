@@ -9,7 +9,7 @@ namespace fishing_tool.Core.Python
     {
         private readonly IHost app;
         private readonly IPythonEnvironment environment;
-        private readonly string path  = Environment.CurrentDirectory;
+        //private readonly string path  = Environment.CurrentDirectory;
         public PythonService() {
 
             var builder = Host.CreateDefaultBuilder()
@@ -20,6 +20,7 @@ namespace fishing_tool.Core.Python
                             .WithPython()
                             .WithHome(home)
                             .FromRedistributable(); // Download Python
+                            
 
 
 
@@ -32,7 +33,7 @@ namespace fishing_tool.Core.Python
         }
 
 
-        public bool exec_script()
+        public bool exec_script(string path)
         {
 
             var module = environment.Script();

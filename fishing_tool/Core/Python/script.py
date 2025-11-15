@@ -15,31 +15,6 @@ def generate(output_path : str):
         "description": 'чемпионат мира 17-18 марта 2001г.Россия, Москва, гребной канал "Крылатское"',
         "teams": [
             {
-                "name": "ФИНЛЯНДИЯ", "id": "1",
-                "fishers": [
-                    {"name": "Хенри Хуттунен", "tours": [
-                        {"Zone": "C", "Weight": "317", "Place": "7"},
-                        {"Zone": "A", "Weight": "543", "Place": "6"}
-                    ]},
-                    {"name": "Сату Паполяки", "tours": [
-                        {"Zone": "A", "Weight": "499", "Place": "4"},
-                        {"Zone": "D", "Weight": "185", "Place": "7"}
-                    ]},
-                    {"name": "Терту Кота-Ахо", "tours": [
-                        {"Zone": "D", "Weight": "164", "Place": "7"},
-                        {"Zone": "E", "Weight": "391", "Place": "6"}
-                    ]},
-                    {"name": "Ристо Мяенля", "tours": [
-                        {"Zone": "E", "Weight": "258", "Place": "6"},
-                        {"Zone": "A", "Weight": "138", "Place": "7"}
-                    ]},
-                    {"name": "Марти Пёлпянен", "tours": [
-                        {"Zone": "B", "Weight": "174", "Place": "7"},
-                        {"Zone": "B", "Weight": "685", "Place": "5"}
-                    ]}
-                ]
-            },
-            {
                 "name": "КАНАДА", "id": "2",
                 "fishers": [
                     {"name": "Барри Лупола", "tours": [
@@ -122,98 +97,14 @@ def generate(output_path : str):
                     ]}
                 ]
             },
-            {
-                "name": "БЕЛОРУССИЯ", "id": "5",
-                "fishers": [
-                    {"name": "Петр Нагула", "tours": [
-                        {"Zone": "B", "Weight": "391", "Place": "6"},
-                        {"Zone": "B", "Weight": "574", "Place": "4"}
-                    ]},
-                    {"name": "Андрей Кишкурно", "tours": [
-                        {"Zone": "E", "Weight": "452", "Place": "5"},
-                        {"Zone": "E", "Weight": "1034", "Place": "3"}
-                    ]},
-                    {"name": "Сергей Левизов", "tours": [
-                        {"Zone": "A", "Weight": "734", "Place": "4"},
-                        {"Zone": "A", "Weight": "907", "Place": "4"}
-                    ]},
-                    {"name": "Юрий Щорс", "tours": [
-                        {"Zone": "C", "Weight": "1007", "Place": "3"},
-                        {"Zone": "C", "Weight": "1450", "Place": "1"}
-                    ]},
-                    {"name": "Владимир Яковлев", "tours": [
-                        {"Zone": "D", "Weight": "543", "Place": "6"},
-                        {"Zone": "D", "Weight": "607", "Place": "4"}
-                    ]},
-                    {"name": "Игорь Гусенков", "tours": [
-                        {"Zone": "-", "Weight": "-", "Place": "-"},
-                        {"Zone": "-", "Weight": "-", "Place": "-"}
-                    ]}
-                ]
-            },
-            {
-                "name": "ШВЕЦИЯ", "id": "6",
-                "fishers": [
-                    {"name": "Ханс-Эрик Кристофферс", "tours": [
-                        {"Zone": "A", "Weight": "804", "Place": "3"},
-                        {"Zone": "B", "Weight": "1096", "Place": "3"}
-                    ]},
-                    {"name": "Томас Альксон", "tours": [
-                        {"Zone": "C", "Weight": "678", "Place": "4"},
-                        {"Zone": "C", "Weight": "875", "Place": "3"}
-                    ]},
-                    {"name": "Петер Эриксон", "tours": [
-                        {"Zone": "B", "Weight": "569", "Place": "5"},
-                        {"Zone": "B", "Weight": "798", "Place": "4"}
-                    ]},
-                    {"name": "Фольк Андерсон", "tours": [
-                        {"Zone": "D", "Weight": "467", "Place": "5"},
-                        {"Zone": "D", "Weight": "876", "Place": "2"}
-                    ]},
-                    {"name": "Ове Эриксон", "tours": [
-                        {"Zone": "E", "Weight": "621", "Place": "4"},
-                        {"Zone": "A", "Weight": "843", "Place": "4"}
-                    ]},
-                    {"name": "Берндт Бергрен", "tours": [
-                        {"Zone": "-", "Weight": "-", "Place": "-"},
-                        {"Zone": "-", "Weight": "-", "Place": "-"}
-                    ]}
-                ]
-            },
-            {
-                "name": "РОССИЯ", "id": "7",
-                "fishers": [
-                    {"name": "Михаил Дунин", "tours": [
-                        {"Zone": "B", "Weight": "1449", "Place": "1"},
-                        {"Zone": "A", "Weight": "1445", "Place": "1"}
-                    ]},
-                    {"name": "Алексей Дьяченко", "tours": [
-                        {"Zone": "A", "Weight": "1152", "Place": "1"},
-                        {"Zone": "D", "Weight": "1485", "Place": "1"}
-                    ]},
-                    {"name": "Максим Дыдыкин", "tours": [
-                        {"Zone": "D", "Weight": "1283", "Place": "2"},
-                        {"Zone": "B", "Weight": "1295", "Place": "2"}
-                    ]},
-                    {"name": "Максим Кусмарцев", "tours": [
-                        {"Zone": "C", "Weight": "1441", "Place": "1"},
-                        {"Zone": "C", "Weight": "1266", "Place": "2"}
-                    ]},
-                    {"name": "Сергей Кусмарцев", "tours": [
-                        {"Zone": "E", "Weight": "1233", "Place": "2"},
-                        {"Zone": "E", "Weight": "1296", "Place": "2"}
-                    ]},
-                    {"name": "Павел Ржанов", "tours": [
-                        {"Zone": "E", "Weight": "2429", "Place": "1"},
-                        {"Zone": "-", "Weight": "2834", "Place": "1"}
-                    ]}
-                ]
-            }
+           
+           
         ]
     }
+
     root = build_tournament_xml(tournament_data)
     tree = ET.ElementTree(root)
-    tree.write(output_path, encoding="utf-8", xml_declaration=True)
+    tree.write(output_path + "/example.XML", encoding="utf-8", xml_declaration=True)
     #print("✅ Файл 'tournament.xml' успешно создан!")
 
 

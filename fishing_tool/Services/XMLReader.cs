@@ -25,7 +25,7 @@ namespace fishing_tool.Services
                 Tour cTour = new Tour();
                 string byffer = "";
                 bool first_tour = true;
-
+                bool k = false;
                 if (File.Exists(path))
                 {
                     try
@@ -33,9 +33,12 @@ namespace fishing_tool.Services
 
                         using (XmlReader reader = XmlReader.Create(path))
                         {
-                            while (reader.Read())
-                            {
-                                switch (reader.Name.ToString())
+                            while (!reader.EOF)
+                             {
+                                if (!k)
+                                    reader.Read();
+                                if (reader.IsStartElement())
+                                    switch (reader.Name.ToString())
                                 {
                                     case "Tournament":
 
@@ -45,9 +48,10 @@ namespace fishing_tool.Services
                                         continue;
 
                                     case "Description":
-                                        string description1 = reader.ReadElementContentAsString();
-                                        competition.Description = description1;
 
+                                            byffer = reader.ReadElementContentAsString();
+                                            competition.Description = byffer;
+                                            k = true;
                                         continue;
 
 
@@ -60,7 +64,7 @@ namespace fishing_tool.Services
                                             cTeam.id = id;
                                             competition.Teams.Add(cTeam);
                                         }
-
+                                        k = false;
                                         continue;
 
                                     case "Fisher":
@@ -87,22 +91,26 @@ namespace fishing_tool.Services
 
                                     case "Zone":
                                         cTour.Zone = reader.ReadElementContentAsString();
+                                            k = true;
                                         continue;
 
                                     case "Weight":
-                                        byffer = reader.ReadElementContentAsString();
+                                      
+                                            byffer = reader.ReadElementContentAsString();
                                         if (byffer != "-")
                                             cTour.Weight = Convert.ToDouble(byffer);
 
                                         continue;
 
                                     case "Place":
-                                        byffer = reader.ReadElementContentAsString();
-                                        if (byffer != "-")
+
+                                            byffer = reader.ReadElementContentAsString();
+                                            if (byffer != "-")
                                             cTour.Place = Convert.ToInt16(byffer);
 
                                         cFisher.Tours.Add(cTour);
                                         first_tour = false;
+                                        k = false;
                                         continue;
                                 }
                             }
