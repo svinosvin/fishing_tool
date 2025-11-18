@@ -37,7 +37,7 @@ namespace fishing_tool.Core.ViewModel
                 path = dialog.FolderName;
                 if (_pythonService.exec_script(path))
                 {
-                    MessageBox.Show("Пример успешно сохранен рядом с запускаемым файлом");
+                    MessageBox.Show("Пример успешно сохранен в" + path);
                 }
                 else
                 {

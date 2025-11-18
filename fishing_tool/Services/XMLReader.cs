@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using TestXMLData.Models;
 
@@ -115,11 +116,12 @@ namespace fishing_tool.Services
                                 }
                             }
                         }
+                        MessageBox.Show("Данные были получены!");
                         return true;
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        MessageBox.Show("Данные не были получены!");
                         return false;
                     }
                 }
